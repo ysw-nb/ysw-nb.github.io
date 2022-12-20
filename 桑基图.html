@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>第一个图表</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="js/echarts.min.js"></script>
+  </head>
+  <body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('main'));
+
+      // 指定图表的配置项和数据
+      var option = {
+        title:{
+            text:'我们班星座分布',
+        },
+  tooltip: {
+   
+  },
+  animation: false,
+  series: [
+    {
+        left:10,
+        right:20,
+        top:10,
+        bottom:10,
+        nodeWidth:60,
+        nodeGap:20,
+        height:400,
+      type: 'sankey',
+      layout:'none',
+      //orient:'vertical',
+      emphasis: {
+        focus: 'adjacency'
+      },
+      data: [
+        { name: '男生' },
+        { name: '女生' },
+        { name: '白羊座' },
+        { name: '双子座' },
+        { name: '双鱼座' },
+        { name: '2021年' },
+        { name: '2022年' },
+      ],
+      links: [
+        { source: '男生', target: '白羊座', value: 10},
+        { source: '男生', target: '双子座', value: 3},
+        { source: '男生', target: '双鱼座', value: 8},
+        { source: '女生', target: '白羊座', value: 3},
+        { source: '女生', target: '双子座', value: 1},
+        { source: '女生', target: '双鱼座', value: 2},
+        { source: '白羊座', target: '2021年', value: 6 },
+        { source: '白羊座', target: '2022年', value: 7 },
+        { source: '双子座', target: '2021年', value: 1 },
+        { source: '双子座', target: '2022年', value: 3 },
+        { source: '双鱼座', target: '2021年', value: 4 },
+        { source: '双鱼座', target: '2022年', value: 6 },
+       
+      ],
+     
+    }
+  ]
+};
+
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+    </script>
+  </body>
+</html>
